@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<!-- Cette page contiendra les bases de VUEJS, disponible directement sur le site officiel :) -->
+  
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <div id="app-2">
+    <span v-bind:title="message">
+      Hover pour voir la date :)
+    </span>
+  </div>
+
+  <div id="app-3">
+    <span v-if="seen">Visible car l'élément seen est true :)</span>
+  </div>
+
+
+  <div id="app-4">
+    <h1>To do list !</h1>
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+    <!-- Utilisation de la directive v-on:click qui est comme addEventListener("click", event); celui-ci va alors invoquer une méthode "reverseMessage"  -->
+  </div>
+
+  <div id="app-6">
+
+    <p>{{message}}</p>
+    <input type="text" v-model="message">
+
+  </div>
+
+<div style="height:15vh;"></div>
+
+<h1>Passons aux choses sérieuses</h1>
+
+
+  <script>
+
+    var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+
+
+var app2 = new Vue({
+  el: '#app-2',
+  data: {
+    message: 'Vous avez chargé  ' + new Date().toLocaleString()
+  }
+})
+
+
+
+
+  var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: 'Apprendre Js' },
+      { text: 'Apprendre Vue' },
+      { text: 'Faire quelque chose de cool :)' }
+    ]
+  }
+})
+
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Reverrrsseee'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+
+
+
+  </script>
+</body>
+</html>
